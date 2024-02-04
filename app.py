@@ -7,13 +7,13 @@ app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'to-do.db')
 db = SQLAlchemy(app)
-'''
+
 @app.route('/')
 def index():
     return render_template('index.html')
-'''
-@app.route('/')
-def index():
+
+@app.route('/To-do-List', methods=['POST', 'GET'])
+def TodoList():
     return render_template('To-do-List.html')
 
 class Todo(db.Model):
