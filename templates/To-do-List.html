@@ -6,7 +6,7 @@
 
 {% block body %} 
 
-<div class="To-do-content">
+<div class="To-do-content-container">
     <h1>To-do List</h1>
 
     <table>
@@ -15,20 +15,26 @@
             <th>Added</th>
             <th>Actions</th>
         </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+        {% for task in tasks %}
+            <tr>
+                <td>{{ task.content }}</td>
+                <td>{{ task.date_created.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                <td>
+                    <a href="/delete/{{task.id}}">Delete</a>
+                    <br>
+                    <a href="/update/{{task.id}}">Update</a>
+                </td>
+            </tr>
+        {% endfor %}
     </table>
 
     <div class="form">
-        <form action="/" method="POST">
-            <input type="text" name="To-do-content" id="To-do-content">
-            <input type="submit" value="Add Task">
+        <form action="{{url_for('TodoList')}}" method="POST">
+                <input type="text" name="content" id="content">
+                <input type="submit" value="Add Task">
         </form>
+        
     </div>
-</div>
 
 
 </div>
