@@ -6,10 +6,12 @@
 
 {% block body %} 
 
-<div class="To-do-content-container">
-    <h1>To-do List</h1>
-
-    <table>
+<div class="container-fluid To-do-content-container text-center">
+    <h1 class="mt-3 mb-3 text-center" style="text-align: center">To-do List</h1>
+    {% if tasks|length < 1 %}
+    <h4 style="text-align: center">There are no tasks. Create one below!</h4>
+    {% else %}
+    <table class="mx-auto">
         <tr>
             <th>Task</th>
             <th>Added</th>
@@ -20,18 +22,25 @@
                 <td>{{ task.content }}</td>
                 <td>{{ task.date_created.strftime('%Y-%m-%d %H:%M:%S') }}</td>
                 <td>
-                    <a href="/delete/{{task.id}}">Delete</a>
-                    <br>
-                    <a href="/update/{{task.id}}">Update</a>
+                    <button type="button" class="btn btn-warning" 
+                        onclick="location.href='/update/{{ task.id }}'">Update
+                    </button>
+
+                    <button type="button" class="btn btn-danger"
+                        onclick="location.href='/delete/{{task.id}}'">Delete
+                    </button>
+                    
+
                 </td>
             </tr>
         {% endfor %}
     </table>
+    {% endif %}
 
     <div class="form">
         <form action="{{url_for('TodoList')}}" method="POST">
                 <input type="text" name="content" id="content">
-                <input type="submit" value="Add Task">
+                <input type="submit" value="Add Task" class="btn btn-primary">
         </form>
         
     </div>

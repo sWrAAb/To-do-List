@@ -1,19 +1,19 @@
 body {
 font: 1em sans-serif;    
 }
-
+/*
 .To-do-content-container {
     margin: 0 auto;
-    width: 400px;
+    width: 50%;
 }
-
+*/
 table, td, th {
     border: 1px solid #aaa;
 }
 
 table {
     border-collapse: collapse;
-    width: 100%;
+    /*width: 100%;*/
 }
 
 th {
