@@ -6,8 +6,8 @@ html, body {
 
 body {
     font: 1em sans-serif;    
-    display: flex;
-    flex-direction: column;
+    /*display: flex;
+    flex-direction: column;*/
 
 }
 
@@ -18,7 +18,14 @@ body {
 .container-fluid {
     margin: 0;
     padding: 0;
-    flex: 1 0 auto;
+}
+
+.main-container {
+    min-height: 100vh;
+    padding-bottom: 20px;
+    overflow: hidden;
+    display: block;
+    position: relative;
 }
 
 .navbar {
